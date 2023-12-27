@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/static/css/header.css">
+
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <h3><a href="{% url 'home' %}" class="header-of-home-page">TopicTalk</a></h3>
+    <div class="search-container">
+        <form action="#" method="get">
+            <input type="text" id="search" name="search" placeholder="Search...">
+        </form>
+    </div>
+    <div class="col-md-3 text-end">
+        <button type="button" class="btn btn-outline-primary me-2"><a href="" class="hyperlinks">Profile</a></button>
+        <button type="button" class="btn btn-outline-primary me-2"><a href="{% url 'login' %}" class="hyperlinks">Login</a></button>
+        <button type="button" class="btn btn-outline-primary me-2"><a href="{% url 'register' %}" class="hyperlinks">Sign-up</a></button>
+    </div>
+</header>
+{% block content %}
+{% endblock %}

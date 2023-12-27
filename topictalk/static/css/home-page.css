@@ -1,0 +1,137 @@
+main {
+  padding: 20px;
+}
+
+.post {
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 30%;
+  margin-right: 30%;
+  color: white;
+  border: 1px solid grey;
+}
+
+.post-title {
+  font-size: 20px;
+}
+
+.post-image {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.post-user {
+  display: flex;
+  align-items: center;
+}
+
+.user-image {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.post-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #4169E1;
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #005999;
+}
+
+.posted-hours{
+  font-size: 10px;
+}
+
+
+.count {
+  margin-left: 5px;
+}
+
+header{
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  background-color: #2b3035;;
+}
+
+main{
+  padding-top: 100px;
+}
+
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  background-color: #2b3035;
+  padding-top: 20px;
+  margin-left: 15px;
+}
+
+.sidebar a{
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.subcategories a {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  display: flex;
+  text-align: start;
+  transition: 0.3s;
+}
+
+.sidebar a:hover, .subcategories a:hover {
+  background-color: #555;
+}
+
+.subcategories {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out; /* Adjust the transition time as needed */
+}
+
+.category.active .subcategories {
+  max-height: 200px; /* Adjust the max height as needed */
+}
+
+.arrow, .icon {
+  margin-right: 5px;
+  font-size: 14px;
+  transition: transform 0.3s;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
