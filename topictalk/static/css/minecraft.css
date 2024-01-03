@@ -2,6 +2,10 @@ main {
   padding: 20px;
 }
 
+body{
+  background-color: #2b3035;
+}
+
 .post {
   padding: 20px;
   margin-bottom: 20px;

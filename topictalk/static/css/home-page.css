@@ -1,6 +1,11 @@
 main {
-  padding: 20px;
+  padding-top: 100px;
 }
+
+body{
+  background-color: #2b3035;
+}
+
 
 .post {
   padding: 20px;
@@ -56,10 +61,6 @@ main {
   transition: background-color 0.3s;
 }
 
-.button:hover {
-  background-color: #005999;
-}
-
 .posted-hours{
   font-size: 10px;
 }
@@ -75,11 +76,6 @@ header{
   width: 100%;
   background-color: #2b3035;;
 }
-
-main{
-  padding-top: 100px;
-}
-
 
 .sidebar {
   height: 100%;

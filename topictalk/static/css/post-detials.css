@@ -1,82 +1,11 @@
-html,
-body {
-  height: 100%;
-}
-
-.header-of-home-page{
-  padding-left: 30px;
-  text-decoration: none;
-  color: #FAF9F6;
-}
-
-.header-of-home-page:hover{
-  color: #4169E1;
-}
-
-.btn-outline-primary {
-  color: #4169E1;
-  border: 1px solid #4169E1;
-}
-
-.btn-outline-primary:hover{
-  background-color: #4169E1;
-  border: #4169E1;
-}
-.btn-primary{
-  background-color: #4169E1 ;
-  border: #4169E1;
-}
-
-.search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 20%;
-  padding-left: 23%;
-  padding-right: 10%;
-}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-input[type="text"] {
-  padding: 20px; /* Adjust padding for height */
-  height: 40px; /* Adjust height as needed */
-  font-size: 18px;
-  border: 1px solid #FAF9F6;
-  border-radius: 50px;
-  text-decoration: none;
-  width: 450px;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.col-md-3{
-  padding-right: 20px;
-}
-
-
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
+body{
   background-color: #2b3035;
 }
-
-.topic  {
-  font-size: 20px;  
-  color: white;
-}
-
 
 main {
     padding: 20px;
   }
-  
+
   .post {
     padding: 20px;
     margin-bottom: 20px;
@@ -84,11 +13,11 @@ main {
     margin-right: 30%;
     color: white;
   }
-  
+
   .post-title {
     font-size: 20px;
   }
-  
+
   .post-image {
     width: 100%;
     max-width: 700px;
@@ -96,27 +25,27 @@ main {
     border-radius: 20px;
     margin-bottom: 30px;
   }
-  
+
   .post-user {
     display: flex;
     align-items: center;
   }
-  
+
   .user-image {
     border-radius: 50%;
     margin-right: 10px;
   }
-  
+
   .user-name {
     font-weight: bold;
   }
-  
+
   .post-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .button {
     display: flex;
     align-items: center;
@@ -129,30 +58,22 @@ main {
     border-radius: 5px;
     transition: background-color 0.3s;
   }
-  
+
   .button:hover {
     background-color: #005999;
   }
-  
+
   .posted-hours{
     font-size: 10px;
   }
-  
-  
+
+
   .count {
     margin-left: 5px;
   }
-  
-  header{
-    position: fixed;
-    text-align: center;
-    width: 100%;
-    background-color: #2b3035;;
-  }
-  
-  main{
-    padding-top: 100px;
-  }
+
+
+
 
   .container {
     width: 33%;
@@ -170,9 +91,7 @@ h1 {
 }
 
 /* Comment form styles */
-form {
-    margin-top: 20px;
-}
+
 
 label {
     display: block;
@@ -180,8 +99,7 @@ label {
     color: #333;
 }
 
-input,
-textarea {
+#comment {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;

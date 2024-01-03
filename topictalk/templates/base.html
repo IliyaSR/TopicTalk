@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/static/css/header.css">
-
+<link href="/static/css/sign-in.css" rel="stylesheet">
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
     <h3><a href="{% url 'home' %}" class="header-of-home-page">TopicTalk</a></h3>
     <div class="search-container">
@@ -8,9 +8,10 @@
         </form>
     </div>
     <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2"><a href="" class="hyperlinks">Profile</a></button>
-        <button type="button" class="btn btn-outline-primary me-2"><a href="{% url 'login' %}" class="hyperlinks">Login</a></button>
-        <button type="button" class="btn btn-outline-primary me-2"><a href="{% url 'register' %}" class="hyperlinks">Sign-up</a></button>
+        <a class="btn btn-outline-primary me-2" href="">Profile</a>
+        <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Login</a>
+        <a class="btn btn-outline-primary me-2" href="{% url 'register' %}">Sign-up</a>
+
     </div>
 </header>
 {% block content %}
