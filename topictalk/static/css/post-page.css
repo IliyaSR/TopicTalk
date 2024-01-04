@@ -90,9 +90,18 @@ label {
 input, textarea {
   margin-top: 5px;
   padding: 10px;
-  border: 1px solid #2b3035;
+  border: 1px solid grey;
   border-radius: 4px;
   box-sizing: border-box;
+
+}
+
+textarea{
+  width: 100%;
+}
+
+input {
+  border: 1px solid grey;
 
 }
 
@@ -124,12 +133,17 @@ button {
   padding-bottom: 20px;
 }
 
-input[type="text"]{
-  border: 1px solid black;
-}
 
+
+input{
+  border: 1px solid grey;
+}
 
 .container {
   display: flex;
   margin-left: 50px;
+}
+
+.border-widget{
+  border: 1px solid grey;
 }

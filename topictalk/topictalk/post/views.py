@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 
+from topictalk.post.forms import PostForm, CommentForm
 from topictalk.post.models import Post, Like
 
 
 # Create your views here.
-def post_create(request):
-    return render(request, template_name='post/post-page.html')
 
 
 def post_details(request, pk):
@@ -21,3 +20,16 @@ def post_details(request, pk):
 
 def minecraft(request):
     return render(request, template_name='post/minecraft-post.html')
+
+
+def post_create(request):
+    form = PostForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+
+    context = {'form': form}
+
+    return render(request, template_name='post/post-page.html', context=context)
+
+

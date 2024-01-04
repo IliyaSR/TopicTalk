@@ -59,119 +59,45 @@
 
           <!-- Section for creating a text post -->
           <section id="text-post-section">
-              <div class="button-section">
-                  <button onclick="showTextPostSection()">Text Post</button>
-                  <button onclick="showImagePostSection()">Image Post</button>
-                  <button onclick="showLinkPostSection()">Link Post</button>
-              </div>
 
-              <h2>Create a New Text Post</h2>
+              <h2>Create a New Post</h2>
 
-              <form action="/submit_text_post" method="post">
-                  <label for="text-title">Post Title:</label>
-                  <input type="text" id="text-title" name="text-title" required>
+              <form method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
 
-                  <label for="text-content">Post Content:</label>
-                  <textarea id="text-content" name="text-content" rows="6" required></textarea>
-
-                  <input type="submit" value="Submit Text Post">
-              </form>
-          </section>
-
-          <!-- Section for creating a post with an image -->
-          <section id="image-post-section" style="display: none;">
-              <div class="button-section">
-                  <button onclick="showTextPostSection()">Text Post</button>
-                  <button onclick="showImagePostSection()">Image Post</button>
-                  <button onclick="showLinkPostSection()">Link Post</button>
-              </div>
-
-              <h2>Create a New Post with Image</h2>
-
-              <form action="/submit_image_post" method="post">
-                  <label for="image-title">Post Title:</label>
-                  <input type="text" id="image-title" name="image-title" required>
-
-                  <label for="image-content">Post Content:</label>
-                  <textarea id="image-content" name="image-content" rows="4" required></textarea>
-
-                  <label for="image-upload">Upload Image:</label>
-                  <input type="file" id="image-upload" name="image-upload" accept="image/*" required>
-
-                  <input type="submit" value="Submit Image Post">
-              </form>
-          </section>
-
-          <!-- Section for creating a post with a link -->
-          <section id="link-post-section" style="display: none;">
-              <div class="button-section">
-                  <button onclick="showTextPostSection()">Text Post</button>
-                  <button onclick="showImagePostSection()">Image Post</button>
-                  <button onclick="showLinkPostSection()">Link Post</button>
-              </div>
-
-              <h2>Create a New Post with Link</h2>
-
-              <form action="/submit_link_post" method="post">
-                  <label for="link-title">Post Title:</label>
-                  <input type="text" id="link-title" name="link-title" required>
-
-                  <label for="link-url">Link URL:</label>
-                  <input type="url" id="link-url" name="link-url" required>
-
-                  <label for="link-description">Link Description:</label>
-                  <textarea id="link-description" name="link-description" rows="4" required></textarea>
-
-                  <input type="submit" value="Submit Link Post">
+                  <button type="submit">Create Post</button>
               </form>
           </section>
 
       </main>
   </div>
 
-  <script>
-    function showTextPostSection() {
-        document.getElementById("text-post-section").style.display = "block";
-        document.getElementById("image-post-section").style.display = "none";
-        document.getElementById("link-post-section").style.display = "none";
-    }
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const categories = document.querySelectorAll('.category');
 
-    function showImagePostSection() {
-        document.getElementById("text-post-section").style.display = "none";
-        document.getElementById("image-post-section").style.display = "block";
-        document.getElementById("link-post-section").style.display = "none";
-    }
+            categories.forEach(category => {
+                category.addEventListener('click', () => {
+                    category.classList.toggle('active');
+                    updateArrowIcon(category);
+                });
+            });
 
-    function showLinkPostSection() {
-        document.getElementById("text-post-section").style.display = "none";
-        document.getElementById("image-post-section").style.display = "none";
-        document.getElementById("link-post-section").style.display = "block";
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-    const categories = document.querySelectorAll('.category');
+            function updateArrowIcon(category) {
+                const arrow = category.querySelector('.arrow');
+                const subcategories = category.querySelector('.subcategories');
 
-    categories.forEach(category => {
-      category.addEventListener('click', () => {
-        category.classList.toggle('active');
-        updateArrowIcon(category);
-      });
-    });
-
-    function updateArrowIcon(category) {
-      const arrow = category.querySelector('.arrow');
-      const subcategories = category.querySelector('.subcategories');
-
-      if (category.classList.contains('active')) {
-        arrow.style.transform = 'rotate(90deg)';
-        subcategories.style.maxHeight = subcategories.scrollHeight + 'px';
-      } else {
-        arrow.style.transform = 'rotate(0deg)';
-        subcategories.style.maxHeight = '0';
-      }
-    }
-  });
-</script>
-
+                if (category.classList.contains('active')) {
+                    arrow.style.transform = 'rotate(90deg)';
+                    subcategories.style.maxHeight = subcategories.scrollHeight + 'px';
+                } else {
+                    arrow.style.transform = 'rotate(0deg)';
+                    subcategories.style.maxHeight = '0';
+                }
+            }
+        });
+    </script>
 
 
 {% endblock %}
