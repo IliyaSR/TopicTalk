@@ -137,3 +137,28 @@ header{
   margin-left: 250px;
   padding: 20px;
 }
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.hedaer-minecraft{
+    text-align: center;
+    color: #FAF9F6;
+}
+
+
+.about-community{
+    color: white;
+    position: fixed;
+    margin-left: 75%;
+}
+
+.community-container{
+    max-width: 350px;
+}
+
+.hyperlinks{
+  text-decoration: none;
+}

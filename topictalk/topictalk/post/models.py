@@ -5,6 +5,15 @@ from topictalk.post.validators import validate_file_size
 
 # Create your models here.
 class Post(models.Model):
+    Community = (
+        ('League of legends', 'League of legends'),
+        ('Minecraft', 'Minecraft'),
+        ('NBA', 'NBA'),
+        ('Premier League', 'Premier League'),
+        ('Bitecoin', 'Bitecoin'),
+        ('Litecoin', 'Litecoin')
+    )
+    choose_community = models.CharField(max_length=20, choices=Community)
     post_title = models.CharField(max_length=30)
     post_content = models.TextField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True, validators=[validate_file_size])
