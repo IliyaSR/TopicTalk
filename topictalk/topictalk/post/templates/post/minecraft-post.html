@@ -20,78 +20,66 @@
     <body>
     <main class="main-content">
         <h1 class="hedaer-minecraft">Minecraft</h1>
-    <div class="sidebar">
-        <div class="category" id="section1">
-            <a href="#">
-                <span class="icon"><i class="fas fa-gamepad"></i></span>
-                <span>Gaming</span>
-                <span class="arrow">▶</span>
-            </a>
-            <div class="subcategories">
-                <a href="#"><span class="icon"></span> Minecraft</a>
-                <a href="#"><span class="icon"></span> League of Legends</a>
+        <div class="sidebar">
+            <div class="category" id="section1">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-gamepad"></i></span>
+                    <span>Gaming</span>
+                    <span class="arrow">▶</span>
+                </a>
+                <div class="subcategories">
+                    <a href="#"><span class="icon"></span> Minecraft</a>
+                    <a href="#"><span class="icon"></span> League of Legends</a>
+                </div>
             </div>
-        </div>
 
-        <div class="category" id="section2">
-            <a href="#">
-                <span class="icon"><i class="fas fa-cog"></i></span>
-                <span>Sports</span>
-                <span class="arrow">▶</span>
-            </a>
-            <div class="subcategories">
-                <a href="#"><span class="icon"></span> NBA</a>
-                <a href="#"><span class="icon"></span> Premier League</a>
+            <div class="category" id="section2">
+                <a href="#">
+                    <span class="icon"><i class="fas fa-cog"></i></span>
+                    <span>Sports</span>
+                    <span class="arrow">▶</span>
+                </a>
+                <div class="subcategories">
+                    <a href="#"><span class="icon"></span> NBA</a>
+                    <a href="#"><span class="icon"></span> Premier League</a>
+                </div>
             </div>
-        </div>
 
-        <div class="category" id="section3">
-            <a href="#">
-                <span class="icon"><i class="fab fa-bitcoin"></i></span>
-                <span>Crypto</span>
-                <span class="arrow">▶</span>
-            </a>
-            <div class="subcategories">
-                <a href="#"><span class="icon"></span> Bitecoin</a>
-                <a href="#"><span class="icon"></span> Litecoin</a>
+            <div class="category" id="section3">
+                <a href="#">
+                    <span class="icon"><i class="fab fa-bitcoin"></i></span>
+                    <span>Crypto</span>
+                    <span class="arrow">▶</span>
+                </a>
+                <div class="subcategories">
+                    <a href="#"><span class="icon"></span> Bitecoin</a>
+                    <a href="#"><span class="icon"></span> Litecoin</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="post">
-        <div class="post-user">
-            <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
-            <div>
-                <p class="user-name">John Doe</p>
-                <p class="posted-hours">Posted on 2023-01-01</p>
+        {% for minecraft_post in minecraft_posts %}
+            <div class="post">
+                <div class="post-user">
+                    <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
+                    <div>
+                        <p class="user-name">John Doe</p>
+                        <p class="posted-hours">Posted on 2023-01-01</p>
+                    </div>
+                </div>
+                <h2 class="post-title">{{ minecraft_post.post_title }}</h2>
+                <p class="post-content">{{ minecraft_post.post_content }}</p>
+                {% if minecraft_post.image %}
+                    <img class="post-image" src="OIG.jpg" alt="Image 1">
+                {% endif %}
+                <div class="post-buttons">
+                    <a class="button" href="{% url 'like' minecraft_post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
+                            class="count">{{ minecraft_post.like_set.count }}</span></a>
+                    <button class="button"><i class="icon fas fa-comment"></i> Comment<span class="count">18</span>
+                    </button>
+                    <button class="button"><i class="icon fas fa-share"></i> Share</button>
+                </div>
             </div>
-        </div>
-        <h2 class="post-title">Post Title 1</h2>
-        <p class="post-content">Content of the post goes here...</p>
-        <img class="post-image" src="OIG.jpg" alt="Image 1">
-        <div class="post-buttons">
-            <button class="button"><i class="icon fas fa-thumbs-up"></i> Like<span class="count">42</span></button>
-            <button class="button"><i class="icon fas fa-comment"></i> Comment<span class="count">18</span></button>
-            <button class="button"><i class="icon fas fa-share"></i> Share</button>
-        </div>
-    </div>
-
-    <div class="post">
-        <div class="post-user">
-            <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
-            <div>
-                <p class="user-name">Jane Smith</p>
-                <p class="posted-hours">Posted on 2023-01-02</p>
-            </div>
-        </div>
-        <h2 class="post-title">Post Title 2</h2>
-        <p class="post-content">Content of the post goes here...</p>
-        <img class="post-image" src="photo-1575936123452-b67c3203c357.avif" alt="Image 2">
-        <div class="post-buttons">
-            <button class="button"><i class="icon fas fa-thumbs-up"></i> Like<span class="count">29</span></button>
-            <button class="button"><i class="icon fas fa-comment"></i> Comment<span class="count">12</span></button>
-            <button class="button"><i class="icon fas fa-share"></i> Share</button>
-        </div>
-    </div>
+        {% endfor %}
 
     </main>
     <script>

@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="/static/css/header.css">
 
 
+
     </head>
     <body>
     <div class="container">
@@ -99,36 +100,7 @@
             }
         });
 
-        function toggleCommunityLinks() {
-            const communityLinks = document.querySelector('.community-list');
-            communityLinks.classList.toggle('active');
-        }
 
-        document.addEventListener('click', function (event) {
-            const searchInput = document.querySelector('.search-input');
-            const communityLinks = document.querySelector('.community-list');
-
-            if (event.target !== searchInput && !communityLinks.contains(event.target)) {
-                // Clicked outside the search input and community links, close the links
-                communityLinks.classList.remove('active');
-            }
-        });
-
-        function selectCommunity(communityName) {
-            const searchInput = document.querySelector('.search-input');
-            const communityLinks = document.querySelector('.community-list');
-
-            // Set the value of the search input to the selected community
-            searchInput.value = communityName;
-
-            // Close the community links
-            communityLinks.classList.remove('active');
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const searchInput = document.querySelector('.search-input');
-            searchInput.value = ''; // Clear the input value
-        });
     </script>
 
 

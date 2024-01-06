@@ -16,18 +16,16 @@ class PostForm(forms.ModelForm):
             'post_content': 'Post Content'
         }
 
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-
-            # Add 'id' attribute to the choose_community field
-            self.fields['choose_community'].widget = Select(attrs={
-                'id': 'custom-sidebar',
-                # Add more attributes as needed
-            })
-
-
 
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['text']
+
+        widgets = {
+            'text': forms.Textarea(attrs={'id': 'comment'})
+        }
+
+        labels = {
+            'text': 'Your Comment:'
+        }

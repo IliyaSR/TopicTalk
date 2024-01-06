@@ -36,8 +36,8 @@
             <div class="post-buttons">
                 <a class="button" href="{% url 'like' current_post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
                             class="count">{{ current_post.like_set.count }}</span></a>
-                <button class="button"><i class="icon fas fa-comment"></i> Comment<span class="count">18</span></button>
-                <button class="button"><i class="icon fas fa-share"></i> Share</button>
+                                    <a class="button" href="{% url 'post-details' current_post.id %}"><i class="icon fas fa-comment"></i>Comment<span
+                            class="count">{{ current_post.comment_set.count }}</span></a>
             </div>
         </div>
 
@@ -45,9 +45,9 @@
             <h1>Add Comment</h1>
 
             <!-- Comment form -->
-            <form method="post">
-                <label for="comment">Your Comment:</label>
-                <textarea id="comment" name="comment" rows="4" required></textarea>
+            <form method="post" action="{% url 'comment' current_post.id %}">
+                {% csrf_token %}
+                {{ comment_form }}
 
                 <button type="submit">Submit Comment</button>
             </form>

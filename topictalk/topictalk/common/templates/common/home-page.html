@@ -84,9 +84,8 @@
                 <div class="post-buttons">
                     <a class="button" href="{% url 'like' post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
                             class="count">{{ post.like_set.count }}</span></a>
-                    <button class="button"><i class="icon fas fa-comment"></i> Comment<span class="count">18</span>
-                    </button>
-                    <button class="button"><i class="icon fas fa-share"></i> Share</button>
+                    <a class="button" href="{% url 'post-details' post.id %}"><i class="icon fas fa-comment"></i>Comment<span
+                            class="count">{{ post.comment_set.count }}</span></a>
                 </div>
             </div>
         {% endfor %}
