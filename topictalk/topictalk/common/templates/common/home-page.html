@@ -73,14 +73,16 @@
                     <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
                     <div>
                         <p class="user-name">John Doe</p>
-                        <p class="posted-hours">{{ post.date_of_publication }}</p>
+                        <p class="posted-hours">{{ post.date_time_of_publication }}</p>
                     </div>
                 </div>
                 <h2 class="post-title">{{ post.post_title }}</h2>
                 <p class="post-content">{{ post.post_content }}</p>
-                {% if post.image %}
-                    <img class="post-image" src="/static/images/OIG.jpg" alt="Image 1">
-                {% endif %}
+                <div class="imgBx">
+                    {% if post.image %}
+                        <img class="post-image" src="{{ post.image.url }}" alt="Image 1">
+                    {% endif %}
+                </div>
                 <div class="post-buttons">
                     <a class="button" href="{% url 'like' post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
                             class="count">{{ post.like_set.count }}</span></a>

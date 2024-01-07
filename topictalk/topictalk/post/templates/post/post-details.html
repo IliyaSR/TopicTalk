@@ -25,19 +25,21 @@
                 <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
                 <div>
                     <p class="user-name">John Doe</p>
-                    <p class="posted-hours">{{ current_post.date_of_publication }}</p>
+                    <p class="posted-hours">{{ current_post.date_time_of_publication }}</p>
                 </div>
             </div>
             <h2 class="post-title">{{ current_post.post_title }}</h2>
             <p class="post-content">{{ current_post.post_content }}</p>
-            {% if current_post.image %}
-                <img class="post-image" src="OIG.jpg" alt="Image 1">
-            {% endif %}
+            <div class="imgBx">
+                {% if current_post.image %}
+                    <img class="post-image" src="{{ current_post.image.url }}" alt="Image 1">
+                {% endif %}
+            </div>
             <div class="post-buttons">
                 <a class="button" href="{% url 'like' current_post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
-                            class="count">{{ current_post.like_set.count }}</span></a>
-                                    <a class="button" href="{% url 'post-details' current_post.id %}"><i class="icon fas fa-comment"></i>Comment<span
-                            class="count">{{ current_post.comment_set.count }}</span></a>
+                        class="count">{{ current_post.like_set.count }}</span></a>
+                <a class="button" href="{% url 'post-details' current_post.id %}"><i class="icon fas fa-comment"></i>Comment<span
+                        class="count">{{ current_post.comment_set.count }}</span></a>
             </div>
         </div>
 

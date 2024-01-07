@@ -16,11 +16,14 @@ class Post(models.Model):
     choose_community = models.CharField(max_length=20, choices=Community)
     post_title = models.CharField(max_length=30)
     post_content = models.TextField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True, validators=[validate_file_size])
-    date_of_publication = models.DateField(auto_now=True)
+    image = models.ImageField(upload_to='images', blank=True, null=True, validators=[validate_file_size])
+    date_time_of_publication = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.post_title
+
+    class Meta:
+        ordering = ['-date_time_of_publication']
 
 
 class Comment(models.Model):

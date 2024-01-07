@@ -21,7 +21,7 @@ main {
   .post-image {
     width: 100%;
     max-width: 700px;
-    height: auto;
+    height: 600px;
     border-radius: 20px;
     margin-bottom: 30px;
   }
