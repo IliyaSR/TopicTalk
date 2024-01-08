@@ -38,12 +38,13 @@
             <div class="post-buttons">
                 <a class="button" href="{% url 'like' current_post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
                         class="count">{{ current_post.like_set.count }}</span></a>
-                <a class="button" href="{% url 'post-details' current_post.id %}"><i class="icon fas fa-comment"></i>Comment<span
+                <a class="button" href="{% url 'post-details' current_post.id %}" id="scrollToCommentLink"><i
+                        class="icon fas fa-comment"></i>Comment<span
                         class="count">{{ current_post.comment_set.count }}</span></a>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" id="commentContainer">
             <h1>Add Comment</h1>
 
             <!-- Comment form -->
@@ -54,18 +55,19 @@
                 <button type="submit">Submit Comment</button>
             </form>
         </div>
-        <div class="comments-container">
+        <div class="comments-container" id="{{ current_post.id }}">
             {% for comment in comments %}
-                <div class="comment">
+                <div class="comment" id="{{ comment.id }}">
                     <div class="comment-info">
                         <span>John Doe</span>
                         <span>{{ comment.date_time_of_publication }}</span>
                     </div>
                     <p>{{ comment.text }}</p>
                     <div class="comment-actions">
-                        <button class="action-btn like-btn">Like</button>
+                        <a class="action-btn like-btn" href="{% url 'like_comment' comment.id %}">Like</a>
                     </div>
-                    <div class="like-count" id="likeCount_comment1">0 likes</div>
+                    <span
+                            class="like-count" id="likeCount_comment1">{{ comment.likecomment_set.count }} likes</span>
                 </div>
             {% endfor %}
 
@@ -76,5 +78,30 @@
     </body>
     </html>
 
+    <script>
+        // Check if the URL contains the query parameter 'scroll_to_comment'
+        const urlParams = new URLSearchParams(window.location.search);
+        const scrollToComment = urlParams.get('scroll_to_comment');
 
+        if (scrollToComment === 'true') {
+            // Get the target div element
+            const commentContainer = document.getElementById('commentContainer');
+
+            // Scroll to the target div smoothly
+            commentContainer.scrollIntoView({behavior: 'smooth'});
+        }
+
+        document.getElementById('scrollToCommentLink').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Get the target div element
+            const commentContainer = document.getElementById('commentContainer');
+
+            // Scroll to the target div smoothly
+            commentContainer.scrollIntoView({behavior: 'smooth'});
+        });
+
+
+
+    </script>
 {% endblock %}

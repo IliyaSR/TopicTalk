@@ -1,52 +1,57 @@
-body{
-  background-color: #2b3035;
+body {
+    background-color: #2b3035;
 }
 
 main {
     padding: 20px;
-  }
+}
 
-  .post {
+.post {
     padding: 20px;
     margin-bottom: 20px;
     margin-left: 30%;
     margin-right: 30%;
     color: white;
-  }
+    border: 1px solid grey;
+}
 
-  .post-title {
+.post:hover {
+    border: 1px solid white;
+}
+
+.post-title {
     font-size: 20px;
-  }
+}
 
-  .post-image {
+.post-image {
     width: 100%;
     max-width: 700px;
     height: 600px;
     border-radius: 20px;
     margin-bottom: 30px;
-  }
+}
 
-  .post-user {
+.post-user {
     display: flex;
     align-items: center;
-  }
+}
 
-  .user-image {
+.user-image {
     border-radius: 50%;
     margin-right: 10px;
-  }
+}
 
-  .user-name {
+.user-name {
     font-weight: bold;
-  }
+}
 
-  .post-buttons {
+.post-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
 
-  .button {
+.button {
     display: flex;
     align-items: center;
     padding: 5px 10px;
@@ -57,25 +62,23 @@ main {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
-  }
+}
 
-  .button:hover {
+.button:hover {
     background-color: #005999;
-  }
+}
 
-  .posted-hours{
+.posted-hours {
     font-size: 10px;
-  }
+}
 
 
-  .count {
+.count {
     margin-left: 5px;
-  }
+}
 
 
-
-
-  .container {
+.container {
     width: 33%;
     margin: 50px auto;
     background-color: #FAF9F6;
@@ -107,7 +110,7 @@ label {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
-  height: 50%;
+    height: 50%;
 }
 
 button {
@@ -126,49 +129,53 @@ button:hover {
 }
 
 .comments-container {
-  max-width: 600px;
-  margin: 20px auto;
+    max-width: 600px;
+    margin: 20px auto;
 }
 
 .comment {
-  margin-bottom: 15px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
 }
 
 .comment-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  color: #666;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #666;
 }
 
 .comment-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 .action-btn {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .like-btn {
-  background-color: #3498db;
-  color: #fff;
+    background-color: #3498db;
+    color: #fff;
 }
 
 .comment-btn {
-  background-color: #2ecc71;
-  color: #fff;
+    background-color: #2ecc71;
+    color: #fff;
 }
 
 .like-count {
-  margin-top: 5px;
-  color: #666;
+    margin-top: 5px;
+    color: #666;
+}
+
+.action-btn {
+    text-decoration: none;
 }

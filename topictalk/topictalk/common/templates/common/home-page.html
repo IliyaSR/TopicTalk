@@ -78,7 +78,7 @@
                 </div>
                 <h2 class="post-title">{{ post.post_title }}</h2>
                 <p class="post-content">{{ post.post_content }}</p>
-                <div class="imgBx">
+                <div class="imgBx" id="{{ post.id }}">
                     {% if post.image %}
                         <img class="post-image" src="{{ post.image.url }}" alt="Image 1">
                     {% endif %}
@@ -86,7 +86,7 @@
                 <div class="post-buttons">
                     <a class="button" href="{% url 'like' post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
                             class="count">{{ post.like_set.count }}</span></a>
-                    <a class="button" href="{% url 'post-details' post.id %}"><i class="icon fas fa-comment"></i>Comment<span
+                    <a class="button" href="{% url 'post-details' post.id %}?scroll_to_comment=true"><i class="icon fas fa-comment"></i>Comment<span
                             class="count">{{ post.comment_set.count }}</span></a>
                 </div>
             </div>
@@ -116,6 +116,8 @@
                 }
             }
         });
+
+
     </script>
 
     </body>

@@ -58,7 +58,7 @@
             </div>
         </div>
         {% for minecraft_post in minecraft_posts %}
-            <div class="post">
+            <div class="post"  onclick="location.href='{% url "post-details" minecraft_post.pk %}'">
                 <div class="post-user">
                     <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
                     <div>
@@ -68,7 +68,7 @@
                 </div>
                 <h2 class="post-title">{{ minecraft_post.post_title }}</h2>
                 <p class="post-content">{{ minecraft_post.post_content }}</p>
-                <div class="imgBx">
+                <div class="imgBx" id="{{ minecraft_post.id }}">
                     {% if minecraft_post.image %}
                         <img class="post-image" src="{{ minecraft_post.image.url }}" alt="Image 1">
                     {% endif %}

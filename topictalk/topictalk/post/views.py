@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from topictalk.post.forms import PostForm, CommentForm
-from topictalk.post.models import Post, Like
+from topictalk.post.models import Post, Like, Comment, LikeComment
 
 
 # Create your views here.
@@ -38,19 +38,6 @@ def post_create(request):
     context = {'form': form}
 
     return render(request, template_name='post/post-page.html', context=context)
-
-
-def like_functionality(request, post_id):
-    post = Post.objects.get(id=post_id)
-    liked_object = Like.objects.filter(to_post_id=post_id).first()
-
-    if liked_object:
-        liked_object.delete()
-    else:
-        like = Like(to_post=post)
-        like.save()
-
-    return redirect(request.META['HTTP_REFERER'] + f'#{post_id}')
 
 
 def add_comment(request, post_id):

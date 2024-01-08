@@ -37,3 +37,7 @@ class Comment(models.Model):
 
 class Like(models.Model):
     to_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+
+class LikeComment(models.Model):
+    to_comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
