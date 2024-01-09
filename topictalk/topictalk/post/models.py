@@ -6,7 +6,7 @@ from topictalk.post.validators import validate_file_size
 # Create your models here.
 class Post(models.Model):
     Community = (
-        ('League of legends', 'League of legends'),
+        ('League of Legends', 'League of Legends'),
         ('Minecraft', 'Minecraft'),
         ('NBA', 'NBA'),
         ('Premier League', 'Premier League'),

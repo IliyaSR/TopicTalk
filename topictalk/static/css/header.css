@@ -71,3 +71,52 @@ body {
 .hyperlinks{
   text-decoration: none;
 }
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    background-color: #2b3035;
+    padding-top: 20px;
+    margin-left: 15px;
+}
+
+.sidebar a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.subcategories a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    text-align: start;
+    transition: 0.3s;
+}
+
+.sidebar a:hover, .subcategories a:hover {
+    background-color: #555;
+}
+
+.subcategories {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out; /* Adjust the transition time as needed */
+}
+
+.category.active .subcategories {
+    max-height: 200px; /* Adjust the max height as needed */
+}
+
+.arrow, .icon {
+    margin-right: 5px;
+    font-size: 14px;
+    transition: transform 0.3s;
+}

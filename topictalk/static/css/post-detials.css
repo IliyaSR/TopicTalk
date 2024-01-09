@@ -172,10 +172,24 @@ button:hover {
 }
 
 .like-count {
-    margin-top: 5px;
+    margin-top: 10px;
     color: #666;
+    padding-right: 62%;
 }
 
 .action-btn {
     text-decoration: none;
 }
+
+.about-community {
+    color: white;
+    position: fixed;
+    margin-left: 75%;
+
+}
+
+.community-container {
+    margin-top: 30px;
+    max-width: 350px;
+}
+

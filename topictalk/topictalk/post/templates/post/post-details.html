@@ -20,6 +20,12 @@
     </head>
     <body>
     <main>
+        <div class="about-community">
+            <div class="community-container">
+                <h3>By clicking this button, you can delete the content!</h3>
+                <a class="btn btn-outline-primary me-2" href="{% url 'delete-post' current_post.id %}">Delete</a>
+            </div>
+        </div>
         <div class="post">
             <div class="post-user">
                 <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
@@ -44,6 +50,7 @@
             </div>
         </div>
 
+
         <div class="container" id="commentContainer">
             <h1>Add Comment</h1>
 
@@ -65,9 +72,10 @@
                     <p>{{ comment.text }}</p>
                     <div class="comment-actions">
                         <a class="action-btn like-btn" href="{% url 'like_comment' comment.id %}">Like</a>
-                    </div>
-                    <span
+                        <span
                             class="like-count" id="likeCount_comment1">{{ comment.likecomment_set.count }} likes</span>
+                        <a class="action-btn like-btn" id='delete-comment' href="{% url 'delete-comment' comment.id current_post.id %}">Delete</a>
+                    </div>
                 </div>
             {% endfor %}
 
@@ -100,7 +108,6 @@
             // Scroll to the target div smoothly
             commentContainer.scrollIntoView({behavior: 'smooth'});
         });
-
 
 
     </script>

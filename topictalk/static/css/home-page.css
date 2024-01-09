@@ -10,6 +10,7 @@ body {
 .post {
     padding: 20px;
     margin-bottom: 20px;
+    margin-top: 30px;
     margin-left: 30%;
     margin-right: 30%;
     color: white;
@@ -143,12 +144,6 @@ header {
     padding: 20px;
 }
 
-.hedaer-minecraft {
-    text-align: center;
-    color: #FAF9F6;
-}
-
-
 .about-community {
     color: white;
     position: fixed;
@@ -156,6 +151,7 @@ header {
 }
 
 .community-container {
+    margin-top: 30px;
     max-width: 350px;
 }
 
