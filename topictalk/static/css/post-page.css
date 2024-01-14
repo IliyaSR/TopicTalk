@@ -1,55 +1,5 @@
-.sidebar {
-    height: 100%;
-    width: 250px;
-    background-color: #2b3035;
-    padding-top: 20px;
-    margin-left: 15px;
-
-}
-
 body {
     background-color: #2b3035;
-}
-
-.sidebar a {
-    padding: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    transition: 0.3s;
-}
-
-.subcategories a {
-    padding: 10px;
-    text-decoration: none;
-    font-size: 16px;
-    color: white;
-    display: flex;
-    text-align: start;
-    transition: 0.3s;
-}
-
-.sidebar a:hover, .subcategories a:hover {
-    background-color: #555;
-}
-
-.subcategories {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out; /* Adjust the transition time as needed */
-}
-
-.category.active .subcategories {
-    max-height: 200px; /* Adjust the max height as needed */
-}
-
-.arrow, .icon {
-    margin-right: 5px;
-    font-size: 14px;
-    transition: transform 0.3s;
 }
 
 .content {
@@ -60,12 +10,9 @@ body {
 
 main {
     background-color: #FDFCFA;
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
     width: 60%;
-    margin-left: 200px;
 
 }
 
@@ -75,6 +22,7 @@ section {
 
 h2 {
     color: #2b3035;
+    text-align: center;
 }
 
 form {
@@ -88,13 +36,13 @@ label {
 }
 
 input, textarea {
-    margin-top: 5px;
     padding: 10px;
     border: 1px solid grey;
     border-radius: 4px;
     box-sizing: border-box;
 
 }
+
 
 textarea {
     width: 100%;
@@ -123,7 +71,7 @@ button {
     background-color: #4169E1;
     border: 1px solid #4169E1;
     padding: 6px;
-    border-radius: 10%;
+    border-radius: 1%;
     font-size: 20px;
     margin-right: 20px;
 }
@@ -140,10 +88,20 @@ input {
 
 .container {
     display: flex;
-    margin-left: 50px;
+   justify-content: center;
+
+}
+
+.section{
+    padding: 10px;
 }
 
 .border-widget {
     border: 1px solid grey;
+}
+
+.main-page{
+    padding-top: 100px;
+    background-color: #2b3035;
 }
 

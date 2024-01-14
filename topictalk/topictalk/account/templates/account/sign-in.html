@@ -1,10 +1,7 @@
-{% extends 'base.html' %}
-
-{% block content %}
-
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="../assets/js/color-modes.js"></script>
+<head>
+    <script src="../assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,42 +14,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
-      <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/header.css">
 
-    
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/sign-in.css" rel="stylesheet">
-  </head>
-  <body>
-    
-  <main class="form-signin w-100 m-auto">
+</head>
+<body>
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <h3><a href="{% url 'home' %}" class="header-of-home-page">TopicTalk</a></h3>
+    <div class="search-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ search_form }}
+        </form>
+    </div>
+    <div class="col-md-3 text-end">
+        <a class="btn btn-outline-primary me-2" href="">Profile</a>
+        <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Login</a>
+        <a class="btn btn-outline-primary me-2" href="{% url 'register' %}">Sign-up</a>
+
+    </div>
+</header>
+
+<main class="form-signin w-100 m-auto">
     <form>
-      <h1 class="h3 mb-3 fw-normal">Please log in</h1>
+        <h1 class="h3 mb-3 fw-normal">Please log in</h1>
 
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-      </div>
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
 
-      <div class="form-check text-start my-3">
-        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Remember me
-        </label>
-      </div>
-      <button class="btn btn-primary w-100 py-2" type="submit">Log in</button>
+        <div class="form-check text-start my-3">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Remember me
+            </label>
+        </div>
+        <button class="btn btn-primary w-100 py-2" type="submit">Log in</button>
     </form>
-  </main>
+</main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-    </body>
+</body>
 </html>
-
-{% endblock %}

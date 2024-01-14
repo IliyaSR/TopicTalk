@@ -2,6 +2,12 @@ html,
 body {
   height: 100%;
 }
+header {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    background-color: #2b3035;
+}
 
 .header-of-home-page{
   padding-left: 30px;

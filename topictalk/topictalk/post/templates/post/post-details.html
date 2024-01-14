@@ -19,7 +19,6 @@
 
     </head>
     <body>
-    <main>
         <div class="about-community">
             <div class="community-container">
                 <h3>By clicking this button, you can delete the content!</h3>
@@ -73,20 +72,44 @@
                     <div class="comment-actions">
                         <a class="action-btn like-btn" href="{% url 'like_comment' comment.id %}">Like</a>
                         <span
-                            class="like-count" id="likeCount_comment1">{{ comment.likecomment_set.count }} likes</span>
-                        <a class="action-btn like-btn" id='delete-comment' href="{% url 'delete-comment' comment.id current_post.id %}">Delete</a>
+                                class="like-count"
+                                id="likeCount_comment1">{{ comment.likecomment_set.count }} likes</span>
+                        <a class="action-btn like-btn" id='delete-comment'
+                           href="{% url 'delete-comment' comment.id current_post.id %}">Delete</a>
                     </div>
                 </div>
             {% endfor %}
 
             <!-- Add more comments as needed -->
         </div>
-    </main>
 
     </body>
     </html>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const categories = document.querySelectorAll('.category');
+
+            categories.forEach(category => {
+                category.addEventListener('click', () => {
+                    category.classList.toggle('active');
+                    updateArrowIcon(category);
+                });
+            });
+
+            function updateArrowIcon(category) {
+                const arrow = category.querySelector('.arrow');
+                const subcategories = category.querySelector('.subcategories');
+
+                if (category.classList.contains('active')) {
+                    arrow.style.transform = 'rotate(90deg)';
+                    subcategories.style.maxHeight = subcategories.scrollHeight + 'px';
+                } else {
+                    arrow.style.transform = 'rotate(0deg)';
+                    subcategories.style.maxHeight = '0';
+                }
+            }
+        });
         // Check if the URL contains the query parameter 'scroll_to_comment'
         const urlParams = new URLSearchParams(window.location.search);
         const scrollToComment = urlParams.get('scroll_to_comment');

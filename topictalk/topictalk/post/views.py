@@ -43,11 +43,15 @@ def minecraft(request):
 
 def post_create(request):
     form = PostForm(request.POST or None, request.FILES or None)
+    search_form = SearchForm()
     if form.is_valid():
         form.save()
         return redirect('home')
 
-    context = {'form': form}
+    context = {
+        'form': form,
+        'search_form': search_form
+    }
 
     return render(request, template_name='post/post-page.html', context=context)
 
@@ -66,8 +70,10 @@ def add_comment(request, post_id):
 
 def league_of_legends(request):
     league_of_legends_posts = Post.objects.filter(choose_community='League of Legends')
+    search_form = SearchForm()
     context = {
-        'league_of_legends_posts': league_of_legends_posts
+        'league_of_legends_posts': league_of_legends_posts,
+        'search_form' : search_form
     }
 
     return render(request, template_name='post/league-of-legends.html', context=context)
@@ -75,8 +81,10 @@ def league_of_legends(request):
 
 def nba(request):
     nba_posts = Post.objects.filter(choose_community='NBA')
+    search_form = SearchForm()
     context = {
-        'nba_posts': nba_posts
+        'nba_posts': nba_posts,
+        'search_form' : search_form
     }
 
     return render(request, template_name='post/NBA.html', context=context)
@@ -84,8 +92,10 @@ def nba(request):
 
 def premier_league(request):
     premier_league_posts = Post.objects.filter(choose_community='Premier League')
+    search_form = SearchForm()
     context = {
-        'premier_league_posts': premier_league_posts
+        'premier_league_posts': premier_league_posts,
+        'search_form': search_form
     }
 
     return render(request, template_name='post/premier_league.html', context=context)
@@ -93,8 +103,10 @@ def premier_league(request):
 
 def bitecoin(request):
     bitecoin_posts = Post.objects.filter(choose_community='Bitecoin')
+    search_form = SearchForm()
     context = {
-        'bitecoin_posts': bitecoin_posts
+        'bitecoin_posts': bitecoin_posts,
+        'search_form' : search_form
     }
 
     return render(request, template_name='post/bitecoin.html', context=context)
@@ -102,8 +114,10 @@ def bitecoin(request):
 
 def litecoin(request):
     litecoin_posts = Post.objects.filter(choose_community='Litecoin')
+    search_form = SearchForm()
     context = {
-        'litecoin_posts': litecoin_posts
+        'litecoin_posts': litecoin_posts,
+        'search_form' : search_form
     }
 
     return render(request, template_name='post/litecoin.html', context=context)
