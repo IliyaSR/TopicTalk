@@ -7,19 +7,21 @@ from topictalk.post.models import Post, Like, Comment, LikeComment
 # Create your views here.
 def home(request):
     all_posts = Post.objects.all()
-    search_form = SearchForm()
-
-    if request.method == 'POST':
-        search_form = SearchForm(request.POST)
-        if search_form.is_valid():
-            all_posts = all_posts.filter(choose_community__icontains=search_form.cleaned_data['community_name'])
 
     context = {
         'all_posts': all_posts,
-        'search_form': search_form
     }
 
     return render(request, template_name='common/home-page.html', context=context)
+
+
+def search_view(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        if Post.objects.filter(choose_community__icontains=searched):
+            return redirect(f'{searched}')
+        else:
+            return render(request, 'common/search.html', {'searched': searched})
 
 
 def like_functionality(request, post_id):

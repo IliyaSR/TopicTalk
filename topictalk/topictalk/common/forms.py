@@ -2,11 +2,12 @@ from django import forms
 
 
 class SearchForm(forms.Form):
-    community_name = forms.CharField(
+    search_query = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 "placeholder": 'Search by community...'
             }
         ),
-        label= ''
+        label=''
     )
+    section = forms.CharField(max_length=100, required=False)

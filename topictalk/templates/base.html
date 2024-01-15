@@ -3,9 +3,9 @@
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
     <h3><a href="{% url 'home' %}" class="header-of-home-page">TopicTalk</a></h3>
     <div class="search-container">
-        <form method="post">
+        <form method=POST action="{% url 'search_view' %}">
             {% csrf_token %}
-            {{ search_form }}
+            <input type="search" name="searched">
         </form>
     </div>
     <div class="col-md-3 text-end">
@@ -25,7 +25,7 @@
                 </a>
                 <div class="subcategories">
                     <a href="{% url 'minecraft' %}"><span class="icon"></span> Minecraft</a>
-                    <a href="{% url 'league-of-legends' %}"><span class="icon"></span> League of Legends</a>
+                    <a href="{% url 'League of Legends' %}"><span class="icon"></span> League of Legends</a>
                 </div>
             </div>
 
