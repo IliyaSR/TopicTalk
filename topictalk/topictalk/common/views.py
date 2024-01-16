@@ -19,7 +19,7 @@ def search_view(request):
     if request.method == 'POST':
         searched = request.POST['searched']
         if Post.objects.filter(choose_community__icontains=searched):
-            return redirect(f'{searched}')
+            return redirect(f'{searched.lower()}')
         else:
             return render(request, 'common/search.html', {'searched': searched})
 

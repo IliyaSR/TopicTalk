@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'topictalk.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "topictalk2",
+        "NAME": "topictalk",
         "USER": "postgres-user",
         "PASSWORD": "password",
         "HOST": "127.0.0.1",
@@ -127,3 +127,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTH_USER_MODEL = 'account.TopicTalkUser'
