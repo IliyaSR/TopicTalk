@@ -1,71 +1,16 @@
-html,
-body {
-  height: 100%;
+header {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    background-color: #2b3035;
+    margin-bottom: 200px;
 }
 
-.header-of-home-page{
-  padding-left: 30px;
-  text-decoration: none;
-  color: #FAF9F6;
-}
-
-.header-of-home-page:hover{
-  color: #4169E1;
-}
-
-.btn-outline-primary {
-  color: #4169E1;
-  border: 1px solid #4169E1;
-}
-
-.btn-outline-primary:hover{
-  background-color: #4169E1;
-  border: #4169E1;
-}
-.btn-primary{
-  background-color: #4169E1 ;
-  border: #4169E1;
-}
-
-.search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 20%;
-  padding-left: 21%;
-  padding-right: 10%;
-}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-input[type="text"] {
-  padding: 20px; /* Adjust padding for height */
-  height: 40px; /* Adjust height as needed */
-  font-size: 18px;
-  border: 1px solid #FAF9F6;
-  border-radius: 50px;
-  text-decoration: none;
-  width: 450px;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.col-md-3{
-  padding-right: 20px;
+main {
+    padding-top: 100px;
 }
 
 
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #2b3035;
-}
 
 .topic  {
   font-size: 20px;  
@@ -74,7 +19,7 @@ body {
 
 .profile-container {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 1px auto;
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;

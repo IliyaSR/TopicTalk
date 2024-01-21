@@ -1,6 +1,12 @@
 body {
     background-color: #2b3035;
 }
+
+main {
+    padding-top: 100px;
+}
+
+
 header {
     position: fixed;
     text-align: center;
@@ -8,10 +14,9 @@ header {
     background-color: #2b3035;
 }
 
-main{
+main {
     padding-top: 100px;
 }
-
 
 
 .post {
