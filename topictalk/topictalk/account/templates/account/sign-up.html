@@ -1,3 +1,5 @@
+{% load forms %}
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 <head>
@@ -43,24 +45,21 @@
     <form method="post">
         <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
         {% csrf_token %}
-        {{ form.email }}
-        {{ form.password1 }}
-        {{ form.password2 }}
         <div class="form-floating">
             {{ form.username }}
             <label for="floatingInput">Username</label>
         </div>
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            {{ form.email }}
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            {{ form.password1 }}
             <label for="floatingInput">Password</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            {{ form.password2 }}
+            <label for="floatingPassword">Repeat password</label>
         </div>
 
         <div class="form-check text-start my-3">
