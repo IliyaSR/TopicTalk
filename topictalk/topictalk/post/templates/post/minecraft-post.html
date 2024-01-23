@@ -18,39 +18,49 @@
 
     </head>
     <body>
-        <div class="about-community">
-            <div class="community-container">
-                <h2>About Section</h2>
-                <p>Welcome to our Minecraft corner! Explore tips, builds, and more for an enhanced gaming experience!</p>
-                <a class="btn btn-outline-primary me-2" href="{% url 'post-create' %}">Create
-                    post</a>
+    <div class="about-community">
+        <div class="community-container">
+            <h2>About Section</h2>
+            <p>Welcome to our Minecraft corner! Explore tips, builds, and more for an enhanced gaming experience!</p>
+            <a class="btn btn-outline-primary me-2" href="{% url 'post-create' %}">Create
+                post</a>
+        </div>
+    </div>
+    <h1 class="hedaer-minecraft">Minecraft</h1>
+    {% for minecraft_post in minecraft_posts %}
+        <div class="post" onclick="location.href='{% url "post-details" minecraft_post.pk %}'">
+            <div class="post-user">
+                <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
+                <div>
+                    <p class="user-name">{{ current_post.user.username }}</p>
+                    <p class="posted-hours">Posted on {{ minecraft_post.date_time_of_publication }}</p>
+                </div>
+            </div>
+            <h2 class="post-title">{{ minecraft_post.post_title }}</h2>
+            <p class="post-content">{{ minecraft_post.post_content }}</p>
+            <div class="imgBx" id="{{ minecraft_post.id }}">
+                {% if minecraft_post.image %}
+                    <img class="post-image" src="{{ minecraft_post.image.url }}" alt="Image 1">
+                {% endif %}
+            </div>
+            <div class="post-buttons">
+                {% if request.user.is_authenticated %}
+                    <a class="button" href="{% url 'like' current_post.id %}"><i
+                            class="icon fas fa-thumbs-up"></i>Like<span
+                            class="count">{{ current_post.like_set.count }}</span></a>
+                    <a class="button" href="{% url 'post-details' current_post.id %}?scroll_to_comment=true"><i
+                            class="icon fas fa-comment"></i>Comment<span
+                            class="count">{{ current_post.comment_set.count }}</span></a>
+                {% else %}
+                    <a class="button" href="{% url 'login' %}"><i class="icon fas fa-thumbs-up"></i>Like<span
+                            class="count">{{ current_post.like_set.count }}</span></a>
+                    <a class="button" href="{% url 'login' %}?scroll_to_comment=true"><i
+                            class="icon fas fa-comment"></i>Comment<span
+                            class="count">{{ current_post.comment_set.count }}</span></a>
+                {% endif %}
             </div>
         </div>
-        <h1 class="hedaer-minecraft">Minecraft</h1>
-        {% for minecraft_post in minecraft_posts %}
-            <div class="post"  onclick="location.href='{% url "post-details" minecraft_post.pk %}'">
-                <div class="post-user">
-                    <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
-                    <div>
-                        <p class="user-name">John Doe</p>
-                        <p class="posted-hours">Posted on {{ minecraft_post.date_time_of_publication }}</p>
-                    </div>
-                </div>
-                <h2 class="post-title">{{ minecraft_post.post_title }}</h2>
-                <p class="post-content">{{ minecraft_post.post_content }}</p>
-                <div class="imgBx" id="{{ minecraft_post.id }}">
-                    {% if minecraft_post.image %}
-                        <img class="post-image" src="{{ minecraft_post.image.url }}" alt="Image 1">
-                    {% endif %}
-                </div>
-                <div class="post-buttons">
-                    <a class="button" href="{% url 'like' minecraft_post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
-                            class="count">{{ minecraft_post.like_set.count }}</span></a>
-                    <a class="button" href="{% url 'post-details' minecraft_post.id %}"><i class="icon fas fa-comment"></i>Comment<span
-                            class="count">{{ minecraft_post.comment_set.count }}</span></a>
-                </div>
-            </div>
-        {% endfor %}
+    {% endfor %}
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

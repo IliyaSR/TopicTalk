@@ -20,40 +20,48 @@
     </head>
     <body>
 
-        <div class="about-community">
-            <div class="community-container">
-                <h2>Create post</h2>
-                <p>This is the best forum page!</p>
-                <a class="btn btn-outline-primary me-2" href="{% url 'post-create' %}">Create
-                    post</a>
-            </div>
+    <div class="about-community">
+        <div class="community-container">
+            <h2>Create post</h2>
+            <p>This is the best forum page!</p>
+            <a class="btn btn-outline-primary me-2" href="{% url 'post-create' %}">Create
+                post</a>
         </div>
+    </div>
 
-        {% for post in all_posts %}
-            <div class="post" onclick="location.href='{% url "post-details" post.pk %}'" id="{{ post.id }}">
-                <div class="post-user">
-                    <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
-                    <div>
-                        <p class="user-name">John Doe</p>
-                        <p class="posted-hours">{{ post.date_time_of_publication }}</p>
-                    </div>
+    {% for post in all_posts %}
+        <div class="post" onclick="location.href='{% url "post-details" post.pk %}'" id="{{ post.id }}">
+            <div class="post-user">
+                <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
+                <div>
+                    <p class="user-name">{{ post.user.username }}</p>
+                    <p class="posted-hours">{{ post.date_time_of_publication }}</p>
                 </div>
-                <h2 class="post-title">{{ post.post_title }}</h2>
-                <p class="post-content">{{ post.post_content }}</p>
-                <div class="imgBx">
-                    {% if post.image %}
-                        <img class="post-image" src="{{ post.image.url }}" alt="Image 1">
-                    {% endif %}
-                </div>
-                <div class="post-buttons">
+            </div>
+            <h2 class="post-title">{{ post.post_title }}</h2>
+            <p class="post-content">{{ post.post_content }}</p>
+            <div class="imgBx">
+                {% if post.image %}
+                    <img class="post-image" src="{{ post.image.url }}" alt="Image 1">
+                {% endif %}
+            </div>
+            <div class="post-buttons">
+                {% if request.user.is_authenticated %}
                     <a class="button" href="{% url 'like' post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
                             class="count">{{ post.like_set.count }}</span></a>
                     <a class="button" href="{% url 'post-details' post.id %}?scroll_to_comment=true"><i
                             class="icon fas fa-comment"></i>Comment<span
                             class="count">{{ post.comment_set.count }}</span></a>
-                </div>
+                {% else %}
+                    <a class="button" href="{% url 'login' %}"><i class="icon fas fa-thumbs-up"></i>Like<span
+                            class="count">{{ post.like_set.count }}</span></a>
+                    <a class="button" href="{% url 'login' %}?scroll_to_comment=true"><i
+                            class="icon fas fa-comment"></i>Comment<span
+                            class="count">{{ post.comment_set.count }}</span></a>
+                {% endif %}
             </div>
-        {% endfor %}
+        </div>
+    {% endfor %}
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const categories = document.querySelectorAll('.category');
@@ -82,6 +90,4 @@
 
     </script>
 
-    </body>
-    </html>
 {% endblock %}

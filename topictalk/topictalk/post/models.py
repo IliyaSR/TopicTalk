@@ -1,5 +1,6 @@
 from django.db import models
 
+from topictalk.account.models import TopicTalkUser
 from topictalk.post.validators import validate_file_size
 
 
@@ -18,6 +19,7 @@ class Post(models.Model):
     post_content = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='images', blank=True, null=True, validators=[validate_file_size])
     date_time_of_publication = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(TopicTalkUser, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.post_title

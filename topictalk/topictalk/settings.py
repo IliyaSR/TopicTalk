@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'topictalk.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "topictalk",
+        "NAME": "topictalk3",
         "USER": "postgres-user",
         "PASSWORD": "password",
         "HOST": "127.0.0.1",

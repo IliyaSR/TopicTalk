@@ -1,10 +1,14 @@
+
+
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic as views
 
-from topictalk.account.forms import TopicTalkUserCreationForm, LoginForm
+from topictalk.account.forms import TopicTalkUserCreationForm, LoginForm, TopicTalkUserEditForm
 from topictalk.account.models import TopicTalkUser
 from django.contrib.auth import views as auth_views
+
+from topictalk.post.models import Post
 
 
 # Create your views here.
@@ -26,11 +30,25 @@ class LogoutUserView(auth_views.LogoutView):
 
 
 def details_profile(request, pk):
-    return render(request, template_name='account/profile.html')
+    current_profile = TopicTalkUser.objects.get(pk=pk)
+    posts = Post.objects.filter(user_id=current_profile.pk)
+    number_of_posts = posts.count()
+
+    context = {
+        "current_profile": current_profile,
+        'number_of_posts': number_of_posts
+    }
+
+    return render(request, template_name='account/profile.html', context=context)
 
 
-def edit_profile(request, pk):
-    return render(request, template_name='account/edit-profile.html')
+class UserEditView(views.UpdateView):
+    model = TopicTalkUser
+    form_class = TopicTalkUserEditForm
+    template_name = 'account/edit-profile.html'
+
+    def get_success_url(self):
+        return reverse_lazy('profile-details', kwargs={'pk': self.object.pk})
 
 
 def delete_profile(request, pk):

@@ -1,46 +1,71 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!doctype html>
-<html lang="en" data-bs-theme="auto">
-  <head><script src="../assets/js/color-modes.js"></script>
+    <!doctype html>
+    <html lang="en" data-bs-theme="auto">
+    <head>
+        <script src="../assets/js/color-modes.js"></script>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Album example · Bootstrap v5.3</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/edit-profile.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Album example · Bootstrap v5.3</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/edit-profile.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="/static/css/header.css">
 
-    
-  </head>
-  <body>
+
+    </head>
+    <body>
 
     <div class="edit-profile-container">
-      <div class="edit-profile-header">
-          <h1>Edit Profile</h1>
-      </div>
-      <div class="edit-profile-content">
-          <form action="/update-profile" method="post">
-              <!-- Editable profile fields -->
-              <label for="username">Username:</label>
-              <input type="text" id="username" name="username" value="JohnDoe">
-  
-              <label for="email">Email:</label>
-              <input type="text" id="username" name="username" value="john.doe@example.com" class="email-input">
-  
-              <button type="submit" class="save-button">Save Changes</button>
-          </form>
-      </div>
+        <div class="edit-profile-header">
+            <h1>Edit Profile</h1>
+        </div>
+        <div class="edit-profile-content">
+            <form action="{% url 'profile-edit' request.user.pk %}" method="post">
+                {% csrf_token %}
+                <!-- Editable profile fields -->
+                <label for="username">Username:</label>
+                {{ form.username }}
+
+                <label for="email">Email:</label>
+                {{ form.email }}
+
+                <button type="submit" class="save-button">Save Changes</button>
+            </form>
+        </div>
     </div>
 
 
+    </body>
+    </html>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const categories = document.querySelectorAll('.category');
 
+            categories.forEach(category => {
+                category.addEventListener('click', () => {
+                    category.classList.toggle('active');
+                    updateArrowIcon(category);
+                });
+            });
 
+            function updateArrowIcon(category) {
+                const arrow = category.querySelector('.arrow');
+                const subcategories = category.querySelector('.subcategories');
 
-</body>
-</html>
+                if (category.classList.contains('active')) {
+                    arrow.style.transform = 'rotate(90deg)';
+                    subcategories.style.maxHeight = subcategories.scrollHeight + 'px';
+                } else {
+                    arrow.style.transform = 'rotate(0deg)';
+                    subcategories.style.maxHeight = '0';
+                }
+            }
+        });
+    </script>
 
 {% endblock %}

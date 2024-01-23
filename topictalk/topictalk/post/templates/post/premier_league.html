@@ -22,8 +22,13 @@
         <div class="community-container">
             <h2>About Section</h2>
             <p>Immerse yourself in Premier League football with our curated content!</p>
-            <a class="btn btn-outline-primary me-2" href="{% url 'post-create' %}">Create
-                post</a>
+            {% if request.user.is_authenticated %}
+                <a class="btn btn-outline-primary me-2" href="{% url 'post-create' %}">Create
+                    post</a>
+            {% else %}
+                <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Create
+                    post</a>
+            {% endif %}
         </div>
     </div>
     <h1 class="hedaer-minecraft">Premier League</h1>
@@ -32,7 +37,7 @@
             <div class="post-user">
                 <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
                 <div>
-                    <p class="user-name">John Doe</p>
+                    <p class="user-name">{{ current_post.user.username }}</p>
                     <p class="posted-hours">Posted on {{ current_post.date_time_of_publication }}</p>
                 </div>
             </div>
@@ -44,12 +49,20 @@
                 {% endif %}
             </div>
             <div class="post-buttons">
-                <a class="button" href="{% url 'like' current_post.id %}"><i
-                        class="icon fas fa-thumbs-up"></i>Like<span
-                        class="count">{{ current_post.like_set.count }}</span></a>
-                <a class="button" href="{% url 'post-details' current_post.id %}"><i
-                        class="icon fas fa-comment"></i>Comment<span
-                        class="count">{{ current_post.comment_set.count }}</span></a>
+                {% if request.user.is_authenticated %}
+                    <a class="button" href="{% url 'like' current_post.id %}"><i
+                            class="icon fas fa-thumbs-up"></i>Like<span
+                            class="count">{{ current_post.like_set.count }}</span></a>
+                    <a class="button" href="{% url 'post-details' current_post.id %}?scroll_to_comment=true"><i
+                            class="icon fas fa-comment"></i>Comment<span
+                            class="count">{{ current_post.comment_set.count }}</span></a>
+                {% else %}
+                    <a class="button" href="{% url 'login' %}"><i class="icon fas fa-thumbs-up"></i>Like<span
+                            class="count">{{ current_post.like_set.count }}</span></a>
+                    <a class="button" href="{% url 'login' %}?scroll_to_comment=true"><i
+                            class="icon fas fa-comment"></i>Comment<span
+                            class="count">{{ current_post.comment_set.count }}</span></a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

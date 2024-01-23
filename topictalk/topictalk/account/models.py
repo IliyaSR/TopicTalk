@@ -6,5 +6,3 @@ from django.db import models
 class TopicTalkUser(AbstractUser):
     email = models.EmailField(unique=True)
     profile_picture = models.URLField()
-
-

@@ -55,3 +55,15 @@ class LoginForm(AuthenticationForm):
     )
 
 
+class TopicTalkUserEditForm(forms.ModelForm):
+    class Meta():
+        model = TopicTalkUser
+        fields = ['username', 'email']
+        widgets = {
+            'username': forms.TextInput(attrs={
+                "type": 'text', 'id': 'username'
+            }),
+            'email': forms.TextInput(attrs={
+                'type': 'text', 'id': 'username', 'class': 'email-input'
+            })
+        }
