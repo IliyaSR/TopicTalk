@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/static/css/header.css">
+<link href="/static/css/sign-in.css" rel="stylesheet">
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <h3><a href="{% url 'home' %}" class="header-of-home-page">TopicTalk</a></h3>
+    <div class="search-container">
+        <form method=POST action="{% url 'search_view' %}">
+            {% csrf_token %}
+            <input type="text" name="searched" placeholder="Search by community...">
+        </form>
+    </div>
+    <div class="col-md-3 text-end">
+        {% if not request.user.is_authenticated %}
+            <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Login</a>
+            <a class="btn btn-outline-primary me-2" href="{% url 'register' %}">Sign-up</a>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+            <a class="btn btn-outline-primary me-2" href="">Profile</a>
+            <form method="post" class="logout" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
+            </form>
+
+        {% endif %}
+
+    </div>
+</header>
+
+{% block content %}
+{% endblock %}

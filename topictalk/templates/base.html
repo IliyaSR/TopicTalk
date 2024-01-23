@@ -14,8 +14,8 @@
             <a class="btn btn-outline-primary me-2" href="{% url 'register' %}">Sign-up</a>
         {% endif %}
         {% if request.user.is_authenticated %}
-            <a class="btn btn-outline-primary me-2" href="">Profile</a>
-            <form method="post" action="{% url 'logout' %}">
+            <a class="btn btn-outline-primary me-2" href="{% url 'profile-details' request.user.pk %}">Profile</a>
+            <form method="post" class="logout" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-outline-primary me-2">Logout</button>
             </form>
