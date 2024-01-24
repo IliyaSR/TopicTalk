@@ -19,69 +19,69 @@
 
     </head>
     <body>
-        <div class="about-community">
-            <div class="community-container">
-                <h3>By clicking this button, you can delete the content!</h3>
-                <a class="btn btn-outline-primary me-2" href="{% url 'delete-post' current_post.id %}">Delete</a>
+    <div class="about-community">
+        <div class="community-container">
+            <h3>By clicking this button, you can delete the content!</h3>
+            <a class="btn btn-outline-primary me-2" href="{% url 'delete-post' current_post.id %}">Delete</a>
+        </div>
+    </div>
+    <div class="post">
+        <div class="post-user">
+            <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
+            <div>
+                <p class="user-name">{{ current_post.user.username }}</p>
+                <p class="posted-hours">{{ current_post.date_time_of_publication }}</p>
             </div>
         </div>
-        <div class="post">
-            <div class="post-user">
-                <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
-                <div>
-                    <p class="user-name">John Doe</p>
-                    <p class="posted-hours">{{ current_post.date_time_of_publication }}</p>
+        <h2 class="post-title">{{ current_post.post_title }}</h2>
+        <p class="post-content">{{ current_post.post_content }}</p>
+        <div class="imgBx">
+            {% if current_post.image %}
+                <img class="post-image" src="{{ current_post.image.url }}" alt="Image 1">
+            {% endif %}
+        </div>
+        <div class="post-buttons">
+            <a class="button" href="{% url 'like' current_post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
+                    class="count">{{ current_post.like_set.count }}</span></a>
+            <a class="button" href="{% url 'post-details' current_post.id %}" id="scrollToCommentLink"><i
+                    class="icon fas fa-comment"></i>Comment<span
+                    class="count">{{ current_post.comment_set.count }}</span></a>
+        </div>
+    </div>
+
+
+    <div class="container" id="commentContainer">
+        <h1>Add Comment</h1>
+
+        <!-- Comment form -->
+        <form method="post" action="{% url 'comment' current_post.id %}">
+            {% csrf_token %}
+            {{ comment_form }}
+
+            <button type="submit">Submit Comment</button>
+        </form>
+    </div>
+    <div class="comments-container" id="{{ current_post.id }}">
+        {% for comment in comments %}
+            <div class="comment" id="{{ comment.id }}">
+                <div class="comment-info">
+                    <span>John Doe</span>
+                    <span>{{ comment.date_time_of_publication }}</span>
+                </div>
+                <p>{{ comment.text }}</p>
+                <div class="comment-actions">
+                    <a class="action-btn like-btn" href="{% url 'like_comment' comment.id %}">Like</a>
+                    <span
+                            class="like-count"
+                            id="likeCount_comment1">{{ comment.likecomment_set.count }} likes</span>
+                    <a class="action-btn like-btn" id='delete-comment'
+                       href="{% url 'delete-comment' comment.id current_post.id %}">Delete</a>
                 </div>
             </div>
-            <h2 class="post-title">{{ current_post.post_title }}</h2>
-            <p class="post-content">{{ current_post.post_content }}</p>
-            <div class="imgBx">
-                {% if current_post.image %}
-                    <img class="post-image" src="{{ current_post.image.url }}" alt="Image 1">
-                {% endif %}
-            </div>
-            <div class="post-buttons">
-                <a class="button" href="{% url 'like' current_post.id %}"><i class="icon fas fa-thumbs-up"></i>Like<span
-                        class="count">{{ current_post.like_set.count }}</span></a>
-                <a class="button" href="{% url 'post-details' current_post.id %}" id="scrollToCommentLink"><i
-                        class="icon fas fa-comment"></i>Comment<span
-                        class="count">{{ current_post.comment_set.count }}</span></a>
-            </div>
-        </div>
+        {% endfor %}
 
-
-        <div class="container" id="commentContainer">
-            <h1>Add Comment</h1>
-
-            <!-- Comment form -->
-            <form method="post" action="{% url 'comment' current_post.id %}">
-                {% csrf_token %}
-                {{ comment_form }}
-
-                <button type="submit">Submit Comment</button>
-            </form>
-        </div>
-        <div class="comments-container" id="{{ current_post.id }}">
-            {% for comment in comments %}
-                <div class="comment" id="{{ comment.id }}">
-                    <div class="comment-info">
-                        <span>John Doe</span>
-                        <span>{{ comment.date_time_of_publication }}</span>
-                    </div>
-                    <p>{{ comment.text }}</p>
-                    <div class="comment-actions">
-                        <a class="action-btn like-btn" href="{% url 'like_comment' comment.id %}">Like</a>
-                        <span
-                                class="like-count"
-                                id="likeCount_comment1">{{ comment.likecomment_set.count }} likes</span>
-                        <a class="action-btn like-btn" id='delete-comment'
-                           href="{% url 'delete-comment' comment.id current_post.id %}">Delete</a>
-                    </div>
-                </div>
-            {% endfor %}
-
-            <!-- Add more comments as needed -->
-        </div>
+        <!-- Add more comments as needed -->
+    </div>
 
     </body>
     </html>

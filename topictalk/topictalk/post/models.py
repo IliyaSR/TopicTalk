@@ -3,7 +3,6 @@ from django.db import models
 from topictalk.account.models import TopicTalkUser
 from topictalk.post.validators import validate_file_size
 
-
 # Create your models here.
 class Post(models.Model):
     Community = (

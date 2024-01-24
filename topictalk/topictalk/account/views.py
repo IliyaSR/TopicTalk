@@ -1,6 +1,4 @@
-
-
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -51,5 +49,12 @@ class UserEditView(views.UpdateView):
         return reverse_lazy('profile-details', kwargs={'pk': self.object.pk})
 
 
-def delete_profile(request, pk):
-    return render(request, template_name='account/delete-profile.html')
+class UserDeleteView(views.DeleteView):
+    model = TopicTalkUser
+    template_name = 'account/delete-profile.html'
+
+    def post(self, *args, pk):
+        user_posts = Post.objects.filter(user_id=pk)
+        user_posts.delete()
+        self.request.user.delete()
+        return redirect('home')

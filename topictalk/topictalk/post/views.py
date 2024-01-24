@@ -12,12 +12,11 @@ def post_details(request, pk):
     current_post = Post.objects.get(pk=pk)
     comments = current_post.comment_set.all()
     comment_form = CommentForm()
-    search_form = SearchForm()
+
     context = {
         'current_post': current_post,
         'comments': comments,
         'comment_form': comment_form,
-        'search_form': search_form,
     }
 
     return render(request, template_name='post/post-details.html', context=context)

@@ -30,7 +30,7 @@
                 <p id="post-count">Posts: {{ number_of_posts }}<span id="post-number"></span></p>
                 <div class="buttons-container">
                     <a class="btn btn-outline-primary me-2" href="{% url 'profile-edit' request.user.pk %}">Edit</a>
-                    <a class="btn btn-outline-primary me-2" href="{% url 'delete-post' request.user.pk %}">Delete</a>
+                    <a class="btn btn-outline-primary me-2" href="{% url 'profile-delete' request.user.pk %}">Delete</a>
                 </div>
                 <!-- Add more details as needed -->
             </div>

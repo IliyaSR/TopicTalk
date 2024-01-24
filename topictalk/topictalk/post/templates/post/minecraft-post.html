@@ -45,18 +45,18 @@
             </div>
             <div class="post-buttons">
                 {% if request.user.is_authenticated %}
-                    <a class="button" href="{% url 'like' current_post.id %}"><i
+                    <a class="button" href="{% url 'like' minecraft_post.id %}"><i
                             class="icon fas fa-thumbs-up"></i>Like<span
-                            class="count">{{ current_post.like_set.count }}</span></a>
-                    <a class="button" href="{% url 'post-details' current_post.id %}?scroll_to_comment=true"><i
+                            class="count">{{ minecraft_post.like_set.count }}</span></a>
+                    <a class="button" href="{% url 'post-details' minecraft_post.id %}?scroll_to_comment=true"><i
                             class="icon fas fa-comment"></i>Comment<span
-                            class="count">{{ current_post.comment_set.count }}</span></a>
+                            class="count">{{ minecraft_post.comment_set.count }}</span></a>
                 {% else %}
                     <a class="button" href="{% url 'login' %}"><i class="icon fas fa-thumbs-up"></i>Like<span
-                            class="count">{{ current_post.like_set.count }}</span></a>
+                            class="count">{{ minecraft_post.like_set.count }}</span></a>
                     <a class="button" href="{% url 'login' %}?scroll_to_comment=true"><i
                             class="icon fas fa-comment"></i>Comment<span
-                            class="count">{{ current_post.comment_set.count }}</span></a>
+                            class="count">{{ minecraft_post.comment_set.count }}</span></a>
                 {% endif %}
             </div>
         </div>
