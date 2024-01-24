@@ -1,95 +1,40 @@
 html,
 body {
-  height: 100%;
-}
-
-.header-of-home-page{
-  padding-left: 30px;
-  text-decoration: none;
-  color: #FAF9F6;
-}
-
-.header-of-home-page:hover{
-  color: #4169E1;
-}
-
-.btn-outline-primary {
-  color: #4169E1;
-  border: 1px solid #4169E1;
-}
-
-.btn-outline-primary:hover{
-  background-color: #4169E1;
-  border: #4169E1;
-}
-.btn-primary{
-  background-color: #4169E1 ;
-  border: #4169E1;
-}
-
-.search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 20%;
-  padding-left: 25%;
-  padding-right: 10%;
-}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-input[type="text"] {
-  padding: 20px; /* Adjust padding for height */
-  height: 40px; /* Adjust height as needed */
-  font-size: 18px;
-  border: 1px solid #FAF9F6;
-  border-radius: 50px;
-  text-decoration: none;
-  width: 450px;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.col-md-3{
-  padding-right: 20px;
+    height: 100%;
 }
 
 
 body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #2b3035;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2b3035;
 }
+
 .form-signin {
-  max-width: 330px;
-  padding: 1rem;
-  padding-top: 8%;
+    max-width: 330px;
+    padding: 1rem;
+    padding-top: 8%;
 }
 
 .form-signin .form-floating:focus-within {
-  z-index: 2;
+    z-index: 2;
 }
 
 input[type="email"] {
-  margin-bottom: -1px;
-  margin-top: 10px;
+    margin-bottom: -1px;
+    margin-top: 10px;
 }
 
 input[type="password"] {
-  margin-bottom: 10px;
-  margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.h3.mb-3.fw-normal{
-  color: #FAF9F6;
+.h3.mb-3.fw-normal {
+    color: #FAF9F6;
 }
 
-.form-check-label{
-  color: #FAF9F6;
+.btn.btn-primary {
+    margin-top: 10px;
 }

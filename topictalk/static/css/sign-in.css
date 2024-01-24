@@ -35,3 +35,8 @@ input[type="password"] {
 .form-check-label{
   color: #FAF9F6;
 }
+
+.form-check{
+  padding-left: 0;
+}
+
