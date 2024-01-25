@@ -25,6 +25,12 @@
         </div>
         <div class="profile-content">
             <div class="user-details">
+                {% if current_profile.profile_picture %}
+                    <img class="user-image" src="{{ current_profile.profile_picture }}" alt="User Image">
+                {% else %}
+                    <img class="user-image" src="/static/images/4038155-200.png"
+                         alt="User Image">
+                {% endif %}
                 <h2>{{ current_profile.username }}</h2>
                 <p>Email: {{ current_profile.email }}</p>
                 <p id="post-count">Posts: {{ number_of_posts }}<span id="post-number"></span></p>

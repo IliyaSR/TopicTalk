@@ -38,7 +38,12 @@
         {% if request.user.is_authenticated %}
             <div class="post" onclick="location.href='{% url "post-details" post.pk %}'" id="{{ post.id }}">
                 <div class="post-user">
-                    <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
+                    {% if post.user.profile_picture %}
+                        <img class="user-image" src="{{ post.user.profile_picture }}" alt="User Image">
+                    {% else %}
+                        <img class="user-image" src="/static/images/4038155-200.png"
+                             alt="User Image">
+                    {% endif %}
                     <div>
                         <p class="user-name">{{ post.user.username }}</p>
                         <p class="posted-hours">{{ post.date_time_of_publication }}</p>
@@ -70,7 +75,12 @@
         {% else %}
             <div class="post" onclick="location.href='{% url 'login' %}'" id="{{ post.id }}">
                 <div class="post-user">
-                    <img class="user-image" src="https://via.placeholder.com/40" alt="User Image">
+                    {% if post.user.profile_picture %}
+                        <img class="user-image" src="{{ post.user.profile_picture }}" alt="User Image">
+                    {% else %}
+                        <img class="user-image" src="/static/images/4038155-200.png"
+                             alt="User Image">
+                    {% endif %}
                     <div>
                         <p class="user-name">{{ post.user.username }}</p>
                         <p class="posted-hours">{{ post.date_time_of_publication }}</p>
