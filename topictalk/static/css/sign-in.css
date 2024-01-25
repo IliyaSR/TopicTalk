@@ -40,3 +40,6 @@ input[type="password"] {
   padding-left: 0;
 }
 
+#id_profile_picture{
+  margin-bottom: 12px;
+}
