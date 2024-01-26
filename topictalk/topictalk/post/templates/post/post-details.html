@@ -19,12 +19,14 @@
 
     </head>
     <body>
-    <div class="about-community">
-        <div class="community-container">
-            <h3>By clicking this button, you can delete the content!</h3>
-            <a class="btn btn-outline-primary me-2" href="{% url 'delete-post' current_post.id %}">Delete</a>
+    {% if request.user.id == current_post.user.id %}
+        <div class="about-community">
+            <div class="community-container">
+                <h3>By clicking delete button, you can delete your own content!</h3>
+                <a class="btn btn-outline-primary me-2" href="{% url 'delete-post' current_post.id %}">Delete</a>
+            </div>
         </div>
-    </div>
+    {% endif %}
     <div class="post">
         <div class="post-user">
             {% if current_profile.profile_picture %}
@@ -70,7 +72,7 @@
         {% for comment in comments %}
             <div class="comment" id="{{ comment.id }}">
                 <div class="comment-info">
-                    <span>John Doe</span>
+                    <span>{{ request.user.username }}</span>
                     <span>{{ comment.date_time_of_publication }}</span>
                 </div>
                 <p>{{ comment.text }}</p>
@@ -79,8 +81,10 @@
                     <span
                             class="like-count"
                             id="likeCount_comment1">{{ comment.likecomment_set.count }} likes</span>
-                    <a class="action-btn like-btn" id='delete-comment'
+                    {% if request.user.id == comment.to_post.user_id %}
+                        <a class="action-btn like-btn" id='delete-comment'
                        href="{% url 'delete-comment' comment.id current_post.id %}">Delete</a>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

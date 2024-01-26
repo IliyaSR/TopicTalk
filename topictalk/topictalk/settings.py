@@ -131,3 +131,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 AUTH_USER_MODEL = 'account.TopicTalkUser'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Replace with your SMTP server address
+EMAIL_PORT = 587  # Replace with your SMTP server port (587 is a common secure port)
+EMAIL_USE_TLS = True  # Use TLS for secure connection
+EMAIL_HOST_USER = 'insomniq7@gmail.com'  # Replace with your email address
+EMAIL_HOST_PASSWORD = 'vqisffmhwjtfztpv'

@@ -12,3 +12,4 @@ urlpatterns = [
         path('delete/', views.UserDeleteView.as_view(), name='profile-delete')
     ]))
 ]
+
