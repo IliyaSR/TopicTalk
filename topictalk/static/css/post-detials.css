@@ -168,7 +168,6 @@ button:hover {
 
 .comment-actions {
     display: flex;
-    justify-content: space-between;
     margin-top: 10px;
 }
 
@@ -193,6 +192,7 @@ button:hover {
     margin-top: 10px;
     color: #666;
     padding-right: 62%;
+    padding-left: 1%;
 }
 
 .action-btn {
@@ -211,3 +211,7 @@ button:hover {
     max-width: 350px;
 }
 
+
+#delete-comment{
+    margin-left: 5%;
+}

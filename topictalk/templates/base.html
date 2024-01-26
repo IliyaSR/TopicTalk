@@ -3,7 +3,7 @@
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
     <h3><a href="{% url 'home' %}" class="header-of-home-page">TopicTalk</a></h3>
     <div class="search-container">
-        <form method=POST action="{% url 'search_view' %}">
+        <form method="POST" action="{% url 'search_view' %}">
             {% csrf_token %}
             <input type="text" name="searched" placeholder="Search by community...">
         </form>
