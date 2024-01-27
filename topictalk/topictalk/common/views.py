@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 
 from topictalk.common.forms import SearchForm
@@ -48,3 +49,5 @@ def like_functionality_about_comments(request, comment_id):
         like.save()
 
     return redirect(request.META['HTTP_REFERER'] + f'#{comment_id}')
+
+

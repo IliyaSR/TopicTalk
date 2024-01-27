@@ -23,3 +23,4 @@ urlpatterns = [
     path('account/', include('topictalk.account.urls')),
     path('post/', include('topictalk.post.urls')),
 ]
+

@@ -1,7 +1,11 @@
+from django.core.mail import send_mail
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
+from topictalk import settings
 from topictalk.account.forms import TopicTalkUserCreationForm, LoginForm, TopicTalkUserEditForm
 from topictalk.account.models import TopicTalkUser
 from django.contrib.auth import views as auth_views
@@ -21,6 +25,7 @@ class UserRegisterView(views.CreateView):
     form_class = TopicTalkUserCreationForm
     template_name = 'account/sign-up.html'
     success_url = reverse_lazy('login')
+
 
 
 class LogoutUserView(auth_views.LogoutView):
