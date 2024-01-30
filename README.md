@@ -1,63 +1,86 @@
-TopicTalk Forum Project
-Overview
+# TopicTalk - Django Forum Project
 
-TopicTalk is a Django-based forum project that allows users to engage in discussions on various topics. This README provides instructions on setting up the project locally using Docker Desktop and connecting it to a PostgreSQL database.
-Prerequisites
+Welcome to TopicTalk, a Django-based forum project designed for discussions on various topics. This project is connected to a PostgreSQL database and can be easily set up using Docker Desktop for local development.
 
-Make sure you have the following installed on your system:
+## Getting Started
 
-    Docker Desktop
-    Python (for managing dependencies)
-    Git (optional)
+### Prerequisites
 
-Getting Started
+Before you begin, ensure you have the following installed on your machine:
 
-    Clone the repository:
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-    bash
+### Setting Up the Project
 
-git clone https://github.com/IliyaSR/TopicTalk.git
-cd TopicTalk
+1. Clone the repository:
 
-Create a virtual environment and install dependencies:
+    ```bash
+    git clone https://github.com/your-username/TopicTalk.git
+    cd TopicTalk
+    ```
 
-bash
+2. Create a `.env` file in the project root and configure your Django settings:
 
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-pip install -r requirements.txt
+    ```env
+    # .env file
+    DEBUG=True
+    SECRET_KEY=your_secret_key
+    DB_NAME=topic_talk_db
+    DB_USER=topic_talk_user
+    DB_PASSWORD=your_db_password
+    DB_HOST=db
+    DB_PORT=5432
+    ```
 
-Set up the PostgreSQL database:
+    Replace `your_secret_key` and `your_db_password` with your preferred values.
 
-Create a file named .env in the project root and add the following:
+3. Build and run the Docker containers:
 
-env
+    ```bash
+    docker-compose up -d --build
+    ```
 
-DB_NAME=your_db_name
-DB_USER=your_db_user
-DB_PASSWORD=your_db_password
-DB_HOST=localhost
-DB_PORT=5432
+    (If using Docker Desktop, you can also use the Docker Desktop interface to manage containers.)
 
-Replace your_db_name, your_db_user, and your_db_password with your desired database name, user, and password.
+4. Apply database migrations:
 
-Build and run the Docker containers:
+    ```bash
+    docker-compose exec web python manage.py migrate
+    ```
 
-bash
+5. Create a superuser for admin access:
 
-docker-compose up -d --build
+    ```bash
+    docker-compose exec web python manage.py createsuperuser
+    ```
 
-This command starts the Django web server and PostgreSQL database in separate containers.
+6. Access the forum at [http://localhost:8000/](http://localhost:8000/) and the admin interface at [http://localhost:8000/admin/](http://localhost:8000/admin/) using the superuser credentials.
 
-Apply database migrations and create a superuser:
+## Development Workflow
 
-bash
+- Start the development server:
 
-docker-compose exec web python manage.py migrate
-docker-compose exec web python manage.py createsuperuser
+    ```bash
+    docker-compose up
+    ```
 
-Follow the prompts to create a superuser account.
+    (Or use Docker Desktop to manage containers.)
 
-Access the TopicTalk Forum:
+- Access the Django shell:
 
-Open your web browser and go to http://localhost:8000/. You can log in with the superuser account created in step 5.
+    ```bash
+    docker-compose exec web python manage.py shell
+    ```
+
+- Run tests:
+
+    ```bash
+    docker-compose exec web python manage.py test
+    ```
+
+## Stopping the Containers
+
+To stop the Docker containers (if using `docker-compose`):
+
+```bash
+docker-compose down
